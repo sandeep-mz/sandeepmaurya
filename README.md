@@ -8,7 +8,7 @@ Pick one:
 
 **Vercel (recommended)**
 1. Go to vercel.com → New Project → "Deploy without Git" (drag & drop) and drop this folder in, or push it to a GitHub repo and import it.
-2. You'll get a live URL like `sandeep-maurya.vercel.app`.
+2. You'll get a live URL like `[sandeep-maurya.vercel.app](https://sandeepmaurya.vercel.app/)`.
 
 **Netlify**
 1. Go to app.netlify.com/drop and drag this folder in. Done — instant live URL.
