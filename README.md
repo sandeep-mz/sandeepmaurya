@@ -53,3 +53,22 @@ fetch('https://formspree.io/f/YOUR_FORM_ID', {
 - All animations respect `prefers-reduced-motion`.
 - Colors/fonts follow your brief: Primary `#2563EB`, Secondary `#1E293B`, Accent `#06B6D4`, Poppins + Inter.
 - No build step, no npm install required — it's a static file, so it opens directly in a browser too.
+
+
+
+
+
+
+in log section if you want to add more blog 
+1. you need to download a imag and add in image in index.html section and blog-post.html 
+  -For image add line 848
+  -line 851 add test heading and dicription
+  <div class="blog-top">
+          <img src="./blog-img/windows-boot-issues1.jpg" alt="Fixing common Windows 11 boot issues">
+          <span>Windows</span>
+  </div>
+        <div class="blog-body"><h4>Windows-boot-issues</h4><p>Fixing Common Windows 11 Boot Issues –      Complete Troubleshooting Guide</p><span class="blog-date">Augest-2026</span>
+        </div>
+2. In blog-post.html  edit this
+  title: "Fixing Common Windows 11 Boot Issues – Complete Troubleshooting Guide",
+  image: "./blog-img/windows-boot-issues1.jpg",

@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sandeep Maurya | IT Support Engineer &amp; Aspiring Cloud/DevOps Engineer</title>
+<link rel="stylesheet" href="style.css">
 <meta name="description" content="Portfolio of Sandeep Maurya — IT Executive & Desktop Support Engineer at CMS IT Services, specializing in Windows Administration, Networking, Microsoft 365 and Infrastructure Support. Building toward Azure Cloud & DevOps Engineering." />
 <meta name="keywords" content="Sandeep Maurya, IT Support Engineer, Desktop Support, Windows Administrator, Network Support, Microsoft 365, Cloud Engineer, DevOps, Portfolio" />
 <meta name="author" content="Sandeep Maurya" />
@@ -143,7 +144,7 @@ img{max-width:100%;display:block;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
 h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-0.02em;}
 .container{max-width:1220px;margin:0 auto;padding:0 24px;}
-section{position:relative;padding:130px 0;}
+section{position:relative;padding:80px 0;}
 @media(max-width:768px){section{padding:90px 0;}}
 
 .eyebrow{
@@ -390,15 +391,6 @@ nav{display:flex;align-items:center;justify-content:space-between;}
 .test-person .name{font-weight:600;font-size:.9rem;}
 .test-person .role{font-size:.78rem;color:var(--text-faint);}
 
-/* ============ BLOG ============ */
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
-.blog-card{padding:0;overflow:hidden;}
-.blog-top{height:150px;background:linear-gradient(135deg,rgba(37,99,235,.25),rgba(6,182,212,.2));display:flex;align-items:center;justify-content:center;}
-.blog-top span{padding:5px 14px;border-radius:100px;background:var(--surface-strong);border:1px solid var(--border);font-size:.72rem;font-family:var(--font-mono);}
-.blog-body{padding:24px;}
-.blog-body h4{font-size:1rem;margin-bottom:8px;}
-.blog-body p{font-size:.85rem;color:var(--text-dim);}
-.blog-date{font-size:.75rem;color:var(--text-faint);font-family:var(--font-mono);margin-top:14px;display:block;}
 
 /* ============ CONTACT ============ */
 .contact-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:40px;}
@@ -765,7 +757,7 @@ footer{border-top:1px solid var(--border);padding:70px 0 30px;background:var(--s
           <div class="project-tags"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">Servlet</span><span class="tag">MySQL</span><span class="tag">HTML/CSS</span></div>
           <h4>Agriculture Supply Chain Management using Blockchain</h4>
           <p>A blockchain-based system built during my final year to improve transparency, security and traceability across agriculture product transactions.</p>
-          <a href="#" class="project-link">View details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="https://github.com/sandeep-mz/Agricultural-Supply-Chain-Using-BCT" class="project-link">View details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="project-card glass reveal">
@@ -835,10 +827,45 @@ footer{border-top:1px solid var(--border);padding:70px 0 30px;background:var(--s
     <div class="eyebrow reveal">Notes</div>
     <h2 class="section-title reveal">From the <span>Blog</span></h2>
     <p class="section-sub reveal">Writing up what I'm learning on the road to Cloud &amp; DevOps. Coming soon.</p>
-    <div class="blog-grid">
-      <div class="blog-card glass reveal"><div class="blog-top"><span>Windows</span></div><div class="blog-body"><h4>Fixing common Windows 11 boot issues</h4><p>A field guide from real support tickets.</p><span class="blog-date">Coming soon</span></div></div>
-      <div class="blog-card glass reveal"><div class="blog-top"><span>Networking</span></div><div class="blog-body"><h4>DHCP vs static IP: when to use which</h4><p>Notes from the network closet.</p><span class="blog-date">Coming soon</span></div></div>
-      <div class="blog-card glass reveal"><div class="blog-top"><span>Cloud</span></div><div class="blog-body"><h4>My path to Azure Administrator</h4><p>Study log and resources that helped.</p><span class="blog-date">Coming soon</span></div></div>
+
+    <div class="blog-nav">
+      <button id="blogPrev" aria-label="Previous post">&larr;</button>
+      <button id="blogNext" aria-label="Next post">&rarr;</button>
+    </div>
+
+    <div class="blog-grid" id="blogGrid">
+      <!-- ============1st post=================== -->
+      <a class="blog-card glass reveal" href="blog-post.html?slug=windows-boot-issues">
+        <div class="blog-top">
+          <img src="./blog-img/windows-boot-issues1.jpg" alt="Fixing common Windows 11 boot issues">
+          <span>Windows</span>
+        </div>
+        <div class="blog-body"><h4>Windows-boot-issues</h4><p>Fixing Common Windows 11 Boot Issues – Complete Troubleshooting Guide</p><span class="blog-date">Augest-2026</span></div>
+      </a>
+      <!-- ============2nd post=================== -->
+      <a class="blog-card glass reveal" href="blog-post.html?slug=dhcp-vs-static-ip">
+        <div class="blog-top">
+          <img src="./blog-img/DHCP-vs-Static-IP.jpg" alt="DHCP vs Static IP: When to Use Which?">
+          <span>Networking</span>
+        </div>
+        <div class="blog-body"><h4>DHCP vs Static IP: When to Use Which?</h4><p>One of the most common questions I receive while troubleshooting network issues..</p><span class="blog-date">Augest-2026</span></div>
+      </a>
+      <!-- ============3rd post=================== -->
+      <a class="blog-card glass reveal" href="blog-post.html?slug=Active-directory-admin">
+        <div class="blog-top">
+          <img src="./blog-img/Active-directory-admin.jpg" alt="My path to Azure Administrator">
+          <span>Cloud</span>
+        </div>
+        <div class="blog-body"><h4>My path to Azure Administrator</h4><p>Study log and resources that helped.</p><span class="blog-date">Augest-2026</span></div>
+      </a>
+      <!-- ============4th post=================== -->
+      <!-- <a class="blog-card glass reveal" href="blog-post.html?slug=azure-admin-path">
+        <div class="blog-top">
+          <img src="./blog-img/windows.webp" alt="My path to Azure Administrator">
+          <span>Cloud</span>
+        </div>
+        <div class="blog-body"><h4>My path to Azure Administrator</h4><p>Study log and resources that helped.</p><span class="blog-date">Coming soon</span></div>
+      </a> -->
     </div>
   </div>
 </section>
@@ -1150,6 +1177,30 @@ function animateParticles(){
 }
 initParticles(); animateParticles();
 window.addEventListener('resize', initParticles);
+/*============NEXT BUTTON FOR SCROLL===========*/
+
+  const grid = document.getElementById('blogGrid');
+  const prev = document.getElementById('blogPrev');
+  const next = document.getElementById('blogNext');
+
+  function getScrollAmount(){
+    const card = grid.querySelector('.blog-card');
+    if(!card) return 0;
+    const style = window.getComputedStyle(grid);
+    const gap = parseInt(style.columnGap || style.gap || 0);
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  next.addEventListener('click', () => grid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
+  prev.addEventListener('click', () => grid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
+
+  function updateNavState() {
+    prev.disabled = grid.scrollLeft <= 0;
+    next.disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 5;
+  }
+  grid.addEventListener('scroll', updateNavState);
+  window.addEventListener('load', updateNavState);
+  window.addEventListener('resize', updateNavState);
 
 /* ============ MAGNETIC BUTTONS ============ */
 document.querySelectorAll('.btn-primary').forEach(btn=>{

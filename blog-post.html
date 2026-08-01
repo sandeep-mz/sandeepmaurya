@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="reading-progress" id="readingProgress"></div>
+<div class="container" id="postContainer">
+  <!-- content injected by JS -->
+</div>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<script>
+  const posts = {
+    /*======1st post===============*/
+    "windows-boot-issues": {
+      tag: "Windows",
+      date: "August 2026",
+      title: "Fixing Common Windows 11 Boot Issues – Complete Troubleshooting Guide",
+      image: "./blog-img/windows-boot-issues1.jpg",
+      body: `
+        <p>Windows failing to boot can be stressful, whether you're working from home or supporting users in an enterprise environment. As a Desktop Support Engineer, these are the Windows 11 boot problems I encounter most frequently and the exact troubleshooting steps I use before considering a reinstall.</p>
+
+        <h2>Why Windows Boot Problems Happen</h2>
+        <p>Boot failures are commonly caused by corrupted system files, Windows updates, damaged boot records, storage driver issues, BIOS configuration changes, or failing hardware. Identifying the root cause is the key to fixing the issue quickly.</p>
+
+        <h2>1. Windows Stuck in a Boot Loop</h2>
+        <p>If Windows continuously restarts without reaching the login screen, the problem is usually related to a failed update, corrupted drivers, or damaged system files.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Enter Windows Recovery Environment (WinRE).</li>
+          <li>Select <strong>Startup Repair</strong>.</li>
+          <li>Boot into <strong>Safe Mode</strong>.</li>
+          <li>Uninstall recently installed Windows updates.</li>
+          <li>Remove or roll back recently updated drivers.</li>
+          <li>Run <code>sfc /scannow</code> and <code>DISM /Online /Cleanup-Image /RestoreHealth</code>.</li>
+        </ul>
+
+        <h2>2. "Inaccessible Boot Device"</h2>
+        <p>This error usually appears after changing BIOS settings, replacing storage hardware, cloning disks, or installing incompatible storage drivers.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Verify SATA mode (AHCI/RAID) in BIOS.</li>
+          <li>Disconnect newly installed drives.</li>
+          <li>Run Startup Repair.</li>
+          <li>Use Command Prompt from WinRE and repair boot records if necessary.</li>
+          <li>Check SSD/HDD health.</li>
+        </ul>
+
+        <h2>3. Black Screen with Mouse Cursor</h2>
+        <p>Windows loads, but the desktop never appears. Explorer.exe often fails to start because of corrupted system files or graphics driver issues.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Press <strong>Ctrl + Shift + Esc</strong>.</li>
+          <li>Open Task Manager.</li>
+          <li>Run <code>explorer.exe</code>.</li>
+          <li>Restart the Graphics Driver using <strong>Win + Ctrl + Shift + B</strong>.</li>
+          <li>Update or reinstall the display driver.</li>
+        </ul>
+
+        <h2>4. Automatic Repair Couldn't Repair Your PC</h2>
+        <p>This message usually indicates corrupted boot files or damaged Windows system files.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Open Command Prompt from Advanced Startup.</li>
+          <li>Run System File Checker.</li>
+          <li>Run DISM image repair.</li>
+          <li>Restore the system using a previous Restore Point if available.</li>
+        </ul>
+
+        <h2>5. Boot Configuration Data (BCD) Corruption</h2>
+        <p>Damaged Boot Configuration Data prevents Windows Boot Manager from locating the operating system.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Boot from Windows Installation Media.</li>
+          <li>Open Command Prompt.</li>
+          <li>Repair the Boot Configuration Data using Bootrec commands.</li>
+          <li>Restart and verify Windows boots normally.</li>
+        </ul>
+
+        <h2>6. Slow Boot After Windows Update</h2>
+        <p>If Windows takes several minutes to boot after an update, unnecessary startup applications or outdated drivers are often responsible.</p>
+        <h3>Recommended Fix</h3>
+        <ul>
+          <li>Disable unnecessary Startup programs.</li>
+          <li>Update chipset and storage drivers.</li>
+          <li>Install the latest Windows updates.</li>
+          <li>Check SSD health using SMART diagnostics.</li>
+        </ul>
+
+        <h2>Useful Troubleshooting Commands</h2>
+        <pre><code>sfc /scannow
+
+DISM /Online /Cleanup-Image /RestoreHealth
+
+chkdsk C: /f /r
+
+bootrec /fixmbr
+
+bootrec /fixboot
+
+bootrec /scanos
+
+bootrec /rebuildbcd</code></pre>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Create regular System Restore Points.</li>
+          <li>Keep Windows and device drivers updated.</li>
+          <li>Back up important files before major updates.</li>
+          <li>Monitor SSD/HDD health regularly.</li>
+          <li>Avoid forcing shutdowns during Windows updates.</li>
+        </ul>
+
+        <h2>Final Thoughts</h2>
+        <p>Most Windows boot issues can be resolved without reinstalling the operating system. By following a structured troubleshooting process—checking startup repair, repairing system files, verifying storage drivers, and rebuilding boot records—you can restore Windows quickly while preserving user data.</p>
+
+        <blockquote><strong>Desktop Support Tip:</strong> Always start with the least destructive solution. In enterprise environments, preserving user data is far more valuable than immediately reinstalling Windows.</blockquote>
+      `
+    },
+    /*======2nd post===============*/
+"dhcp-vs-static-ip": {
+  tag: "Networking",
+  date: "August 2026",
+  title: "DHCP vs Static IP: When to Use Which? – Notes from the Network Closet",
+  image: "./blog-img/DHCP-vs-Static-IP.jpg",
+  body: `
+    <p>One of the most common questions I receive while troubleshooting network issues is, <strong>“Should this device use DHCP or a Static IP Address?”</strong> The answer depends on the device, the network environment, and how the device is being used. As a Desktop Support Engineer, I've seen everything from printers disappearing off the network to servers becoming unreachable because of incorrect IP configuration. This guide explains when to use DHCP, when to assign a Static IP, and the best practices followed in real enterprise environments.</p>
+
+    <h2>What is an IP Address?</h2>
+    <p>An Internet Protocol (IP) address is a unique identifier assigned to every device connected to a network. It allows devices to communicate with each other and access network resources such as printers, servers, and the internet.</p>
+
+    <h2>What is DHCP?</h2>
+    <p><strong>Dynamic Host Configuration Protocol (DHCP)</strong> is a network service that automatically assigns IP addresses and other network settings to devices when they connect to the network.</p>
+
+    <p>A DHCP server automatically provides:</p>
+
+    <ul>
+      <li>IP Address</li>
+      <li>Subnet Mask</li>
+      <li>Default Gateway</li>
+      <li>DNS Server Address</li>
+      <li>Lease Time</li>
+    </ul>
+
+    <h2>Advantages of DHCP</h2>
+
+    <ul>
+      <li>No manual IP configuration required.</li>
+      <li>Reduces human errors.</li>
+      <li>Prevents duplicate IP addresses.</li>
+      <li>Ideal for laptops and mobile devices.</li>
+      <li>Easy to manage in enterprise environments.</li>
+      <li>Automatically reuses unused IP addresses.</li>
+    </ul>
+
+    <h2>What is a Static IP Address?</h2>
+
+    <p>A Static IP Address is manually configured on the device and remains the same until an administrator changes it.</p>
+
+    <p>Unlike DHCP, every network parameter must be entered manually.</p>
+
+    <ul>
+      <li>IP Address</li>
+      <li>Subnet Mask</li>
+      <li>Default Gateway</li>
+      <li>DNS Server</li>
+    </ul>
+
+    <h2>Advantages of Static IP</h2>
+
+    <ul>
+      <li>Device always keeps the same IP.</li>
+      <li>Reliable for servers and printers.</li>
+      <li>Better for Remote Desktop and file sharing.</li>
+      <li>Simplifies firewall and port forwarding rules.</li>
+      <li>Easier to monitor critical infrastructure.</li>
+    </ul>
+
+    <h2>DHCP vs Static IP</h2>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>DHCP</th>
+        <th>Static IP</th>
+      </tr>
+
+      <tr>
+        <td>Configuration</td>
+        <td>Automatic</td>
+        <td>Manual</td>
+      </tr>
+
+      <tr>
+        <td>Management</td>
+        <td>Easy</td>
+        <td>Requires Administration</td>
+      </tr>
+
+      <tr>
+        <td>IP Changes</td>
+        <td>Possible</td>
+        <td>Never Changes</td>
+      </tr>
+
+      <tr>
+        <td>Best For</td>
+        <td>Client Devices</td>
+        <td>Servers & Infrastructure</td>
+      </tr>
+
+      <tr>
+        <td>Risk of Duplicate IP</td>
+        <td>Very Low</td>
+        <td>Possible if configured incorrectly</td>
+      </tr>
+    </table>
+
+    <h2>When Should You Use DHCP?</h2>
+
+    <p>DHCP is the best option for devices that regularly join and leave the network.</p>
+
+    <ul>
+      <li>Office desktops</li>
+      <li>Laptops</li>
+      <li>Employee mobile phones</li>
+      <li>Guest Wi-Fi users</li>
+      <li>Tablets</li>
+      <li>Meeting room devices</li>
+    </ul>
+
+    <h2>When Should You Use Static IP?</h2>
+
+    <p>Static IP addresses should be reserved for devices that other systems need to locate consistently.</p>
+
+    <ul>
+      <li>Domain Controllers</li>
+      <li>DNS Servers</li>
+      <li>DHCP Servers</li>
+      <li>File Servers</li>
+      <li>Print Servers</li>
+      <li>NAS Storage</li>
+      <li>Network Printers</li>
+      <li>CCTV Systems</li>
+      <li>Firewalls</li>
+      <li>Managed Switches</li>
+      <li>Wireless Controllers</li>
+    </ul>
+
+    <h2>Common Mistakes I See During Support</h2>
+
+    <h3>1. Duplicate IP Address</h3>
+
+    <p>A manually assigned Static IP overlaps with the DHCP pool, causing intermittent network connectivity.</p>
+
+    <h3>2. Wrong DNS Server</h3>
+
+    <p>Users can access websites by IP but not by name because the DNS configuration is incorrect.</p>
+
+    <h3>3. Incorrect Gateway</h3>
+
+    <p>The device communicates locally but cannot access the internet.</p>
+
+    <h3>4. Printer Stops Responding</h3>
+
+    <p>A printer receives a different DHCP address after restarting, while all users still try connecting to the old IP.</p>
+
+    <h2>Best Practice: DHCP Reservation</h2>
+
+    <p>In enterprise environments, I usually recommend <strong>DHCP Reservation</strong> instead of configuring a Static IP directly on the device.</p>
+
+    <p>With DHCP Reservation:</p>
+
+    <ul>
+      <li>The DHCP server always assigns the same IP.</li>
+      <li>Centralized management.</li>
+      <li>No manual configuration on devices.</li>
+      <li>Easy to update DNS and gateway information.</li>
+      <li>Lower chance of configuration mistakes.</li>
+    </ul>
+
+    <h2>Useful Windows Commands</h2>
+
+<pre><code>ipconfig
+
+ipconfig /all
+
+ipconfig /release
+
+ipconfig /renew
+
+ipconfig /flushdns
+
+ping google.com
+
+nslookup google.com
+
+tracert google.com</code></pre>
+
+    <h2>Quick Troubleshooting Checklist</h2>
+
+    <ul>
+      <li>Check whether the device is using DHCP or Static IP.</li>
+      <li>Verify IP Address, Gateway and DNS.</li>
+      <li>Ensure there are no duplicate IP addresses.</li>
+      <li>Test connectivity using Ping.</li>
+      <li>Verify DNS name resolution.</li>
+      <li>Restart the network adapter if necessary.</li>
+      <li>Check DHCP lease information.</li>
+    </ul>
+
+    <h2>Best Practices</h2>
+
+    <ul>
+      <li>Use DHCP for end-user devices.</li>
+      <li>Reserve Static IPs only for critical infrastructure.</li>
+      <li>Document all Static IP assignments.</li>
+      <li>Avoid assigning Static IPs within the DHCP pool.</li>
+      <li>Regularly review DHCP scopes and lease times.</li>
+      <li>Keep DNS and Gateway settings consistent across the network.</li>
+    </ul>
+
+    <h2>Final Thoughts</h2>
+
+    <p>Choosing between DHCP and a Static IP isn't about which one is better—it's about using the right tool for the right device. In modern enterprise networks, DHCP simplifies management for client systems, while Static IPs provide consistency for critical infrastructure. A well-planned IP addressing strategy reduces downtime, simplifies troubleshooting, and keeps your network running efficiently.</p>
+
+    <blockquote>
+      <strong>Desktop Support Tip:</strong> Whenever possible, use <strong>DHCP Reservations</strong> instead of manually configuring Static IP addresses. It combines the reliability of Static IPs with the centralized management of DHCP, making troubleshooting much easier in enterprise environments.
+    </blockquote>
+  `
+},
+/*======3rd post===============*/
+"Active-directory-admin": {
+  tag: "System Administration",
+  date: "August 2026",
+  title: "Active Directory User Management: Daily Tasks Every IT Administrator Should Master",
+  image: "./blog-img/Active-directory-admin.jpg",
+  body: `
+    <p>Active Directory (AD) is the backbone of most Windows enterprise environments. Whether you're a Help Desk Technician, Desktop Support Engineer, or System Administrator, managing user accounts efficiently is a daily responsibility. From resetting passwords to onboarding new employees, understanding Active Directory is essential for maintaining a secure and organized IT infrastructure.</p>
+
+    <h2>What is Active Directory?</h2>
+
+    <p>Active Directory (AD) is Microsoft's directory service that stores information about users, computers, groups, printers, and other network resources. It enables centralized authentication, authorization, and administration across an organization's Windows domain.</p>
+
+    <h2>Why Active Directory is Important</h2>
+
+    <ul>
+      <li>Centralized user management</li>
+      <li>Secure authentication and authorization</li>
+      <li>Simplified access control</li>
+      <li>Group Policy management</li>
+      <li>Single Sign-On (SSO)</li>
+      <li>Enterprise-level security and compliance</li>
+    </ul>
+
+    <h2>Common Daily Administrative Tasks</h2>
+
+    <h3>1. Creating New User Accounts</h3>
+
+    <p>When a new employee joins the organization, the administrator creates an Active Directory account, assigns the correct Organizational Unit (OU), adds the required security groups, and provides initial login credentials.</p>
+
+    <h3>Best Practice</h3>
+
+    <ul>
+      <li>Follow a consistent naming convention.</li>
+      <li>Assign users to the correct OU.</li>
+      <li>Use role-based security groups.</li>
+      <li>Require password change at first login.</li>
+    </ul>
+
+    <h2>2. Resetting User Passwords</h2>
+
+    <p>Password resets are one of the most frequent Help Desk requests. Before resetting a password, verify the user's identity according to your organization's security policy.</p>
+
+    <ul>
+      <li>Unlock the account if required.</li>
+      <li>Reset the password.</li>
+      <li>Force password change at next sign-in.</li>
+    </ul>
+
+    <h2>3. Unlocking Locked Accounts</h2>
+
+    <p>Accounts may become locked after multiple incorrect password attempts, expired cached credentials, or devices repeatedly using an old password.</p>
+
+    <h3>Troubleshooting Steps</h3>
+
+    <ul>
+      <li>Check the lockout status.</li>
+      <li>Unlock the account.</li>
+      <li>Identify the device causing repeated login failures.</li>
+      <li>Update saved credentials if necessary.</li>
+    </ul>
+
+    <h2>4. Managing Security Groups</h2>
+
+    <p>Security groups determine what resources users can access. Instead of assigning permissions directly to users, organizations typically use group-based access control.</p>
+
+    <ul>
+      <li>Finance Group</li>
+      <li>HR Group</li>
+      <li>IT Administrators</li>
+      <li>Shared Folder Access</li>
+      <li>Printer Access</li>
+      <li>Application Access</li>
+    </ul>
+
+    <h2>5. Disabling User Accounts</h2>
+
+    <p>When an employee leaves the organization, the account should be disabled immediately to prevent unauthorized access while preserving audit logs and user data.</p>
+
+    <h3>Recommended Checklist</h3>
+
+    <ul>
+      <li>Disable the AD account.</li>
+      <li>Reset the password.</li>
+      <li>Remove VPN access.</li>
+      <li>Revoke Microsoft 365 licenses.</li>
+      <li>Disable remote access.</li>
+      <li>Document the offboarding process.</li>
+    </ul>
+
+    <h2>6. Computer Account Management</h2>
+
+    <p>Administrators also manage computer objects within Active Directory, ensuring devices remain properly joined to the domain and organized within the correct Organizational Units.</p>
+
+    <ul>
+      <li>Join computers to the domain.</li>
+      <li>Move devices between OUs.</li>
+      <li>Rename computer objects.</li>
+      <li>Disable unused devices.</li>
+    </ul>
+
+    <h2>Understanding Organizational Units (OUs)</h2>
+
+    <p>Organizational Units help organize users and computers logically. Group Policies can be applied at the OU level, making administration much easier.</p>
+
+    <p>Example Structure:</p>
+
+<pre><code>Company.local
+
+├── Users
+│   ├── HR
+│   ├── Finance
+│   ├── IT
+│
+├── Computers
+│   ├── Head Office
+│   ├── Branch Office
+│
+└── Servers</code></pre>
+
+    <h2>Useful PowerShell Commands</h2>
+
+<pre><code>Get-ADUser username
+
+Get-ADComputer
+
+Unlock-ADAccount username
+
+Disable-ADAccount username
+
+Enable-ADAccount username
+
+Get-ADGroupMember "IT Team"</code></pre>
+
+    <h2>Common Mistakes to Avoid</h2>
+
+    <ul>
+      <li>Assigning permissions directly to users instead of groups.</li>
+      <li>Leaving inactive accounts enabled.</li>
+      <li>Using overly broad administrative privileges.</li>
+      <li>Ignoring password and account lockout policies.</li>
+      <li>Creating duplicate user accounts.</li>
+      <li>Not documenting administrative changes.</li>
+    </ul>
+
+    <h2>Security Best Practices</h2>
+
+    <ul>
+      <li>Apply the Principle of Least Privilege.</li>
+      <li>Enable Multi-Factor Authentication where possible.</li>
+      <li>Review inactive accounts regularly.</li>
+      <li>Use strong password policies.</li>
+      <li>Audit privileged group memberships.</li>
+      <li>Back up Active Directory regularly.</li>
+      <li>Monitor failed login attempts.</li>
+    </ul>
+
+    <h2>Real-World Scenario</h2>
+
+    <p>A user reports they cannot log in after changing their password. Investigation reveals that their laptop is still using cached Wi-Fi credentials with the old password, repeatedly locking the account. Updating the saved credentials and unlocking the account restores access immediately. Situations like this are common in enterprise environments and highlight the importance of understanding account lockout behavior.</p>
+
+    <h2>Final Thoughts</h2>
+
+    <p>Effective Active Directory administration is more than creating user accounts—it's about maintaining security, ensuring users have the right access, and keeping the organization's identity infrastructure healthy. Mastering these everyday administrative tasks will improve troubleshooting efficiency and prepare you for advanced System Administration roles.</p>
+
+    <blockquote>
+      <strong>Administrator Tip:</strong> Never assign permissions directly to individual users when a security group can achieve the same result. Group-based access control is easier to manage, more secure, and scales much better as organizations grow.
+    </blockquote>
+  `
+},
+    /*======4th post===============*/
+
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const post = posts[slug];
+  const container = document.getElementById('postContainer');
+
+  if (post) {
+    document.title = post.title;
+
+    // Estimated reading time (200 wpm)
+    const plainText = post.body.replace(/<[^>]*>/g, ' ');
+    const wordCount = plainText.trim().split(/\s+/).length;
+    const readMins = Math.max(1, Math.round(wordCount / 200));
+
+    container.innerHTML = `
+      <a class="back-link" href="index.html#blog">&larr; Back to blog</a>
+      <div class="post-meta">
+        <span class="post-tag">${post.tag}</span>
+        <span class="reading-time">${readMins} min read</span>
+      </div>
+      <h1 class="post-title">${post.title}</h1>
+      <span class="post-date">${post.date}</span>
+      <div class="post-hero" style="${post.image ? `background-image:url('${post.image}');background-size:cover;background-position:center;` : ''}"></div>
+      <div id="tocContainer"></div>
+      <div class="post-body" id="postBody">${post.body}</div>
+    `;
+
+    // Build table of contents from <h2> tags
+    const bodyEl = document.getElementById('postBody');
+    const headings = bodyEl.querySelectorAll('h2');
+    if (headings.length > 1) {
+      let tocHtml = `<div class="toc"><div class="toc-title">On this page</div><ul>`;
+      headings.forEach((h, i) => {
+        const id = 'section-' + i;
+        h.id = id;
+        tocHtml += `<li><a href="#${id}" data-target="${id}">${h.textContent}</a></li>`;
+      });
+      tocHtml += `</ul></div>`;
+      document.getElementById('tocContainer').innerHTML = tocHtml;
+
+      // Highlight active section on scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const link = document.querySelector(`.toc a[data-target="${entry.target.id}"]`);
+          if (link && entry.isIntersecting) {
+            tocLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      headings.forEach(h => observer.observe(h));
+    }
+
+    // Add copy buttons to code blocks
+    bodyEl.querySelectorAll('pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(pre.innerText).then(() => {
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+
+  } else {
+    container.innerHTML = `
+      <a class="back-link" href="index.html#blog">&larr; Back to blog</a>
+      <div class="not-found">
+        <h2>Post not found</h2>
+        <p>This one might still be in the oven.</p>
+      </div>
+    `;
+  }
+
+  // Reading progress bar
+  const progressBar = document.getElementById('readingProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    backToTop.classList.toggle('visible', scrollTop > 400);
+  });
+
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+
+</html>
