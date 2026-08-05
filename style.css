@@ -128,3 +128,19 @@ nav{display:flex;align-items:center;justify-content:space-between;}
   .hamburger{display:flex;z-index:1001;}
   .nav-actions .btn-outline{display:none;}
 }
+
+
+/* ===============================
+   Blog Table Style
+   =============================== */
+.post-body table{width:100%;border-collapse:collapse;margin:24px 0;background:var(--surface-strong);border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:.88rem;}
+.post-body th,.post-body td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);}
+.post-body th{background:rgba(255,255,255,.04);color:var(--text);font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;}
+.post-body td{color:var(--text-dim);}
+.post-body tr:last-child td{border-bottom:none;}
+.post-body tr:hover td{background:rgba(255,255,255,.03);}
+
+@media (max-width:640px){
+  .post-body table{display:block;overflow-x:auto;white-space:nowrap;}
+
+}

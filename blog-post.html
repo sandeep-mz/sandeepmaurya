@@ -506,7 +506,227 @@ Get-ADGroupMember "IT Team"</code></pre>
     </blockquote>
   `
 },
-    /*======4th post===============*/
+    
+/*======4th post===============*/
+  "how-to-make-pendrive-bootable": {
+    tag: "Windows",
+    date: "August 2026",
+    title: "How to Make a Bootable Pendrive for Windows Installation – Complete Guide Using Rufus, Ventoy & Media Creation Tool",
+    image: "./blog-img/bootable-pendrive.jpg",
+    body: `
+      <p>Whether you're installing Windows on a new PC, repairing a corrupted operating system, or performing a clean installation, a bootable USB drive is one of the most important tools every IT professional should have. As a Desktop Support Engineer, creating bootable media is part of my daily workflow for troubleshooting, OS deployment, and system recovery.</p>
+
+      <p>In this guide, you'll learn three reliable methods to create a Windows bootable USB drive using <strong>Rufus</strong>, <strong>Ventoy</strong>, and Microsoft's official <strong>Media Creation Tool</strong>. I'll also explain when to use each method and the common mistakes to avoid.</p>
+
+      <h2>What is a Bootable Pendrive?</h2>
+
+      <p>A bootable USB drive is a flash drive that contains boot files required to start a computer and install or repair an operating system without using a DVD.</p>
+
+      <h2>Why Every IT Engineer Should Carry One</h2>
+
+      <ul>
+        <li>Install Windows 10 or Windows 11.</li>
+        <li>Repair startup and boot issues.</li>
+        <li>Recover systems that won't boot.</li>
+        <li>Format and reinstall Windows.</li>
+        <li>Deploy Windows on multiple computers.</li>
+        <li>Run diagnostic and recovery tools.</li>
+      </ul>
+
+      <h2>Requirements</h2>
+
+      <ul>
+        <li>USB Flash Drive (Minimum 8 GB, 16 GB recommended)</li>
+        <li>Windows ISO File</li>
+        <li>Administrator privileges</li>
+        <li>Reliable internet connection (for downloading Windows)</li>
+      </ul>
+
+      <blockquote>
+        <strong>Important:</strong> Creating a bootable USB will erase all existing data on the flash drive. Always back up important files before proceeding.
+      </blockquote>
+
+      <h2>Method 1 – Create Bootable USB Using Rufus</h2>
+
+      <p>Rufus is one of the fastest and most popular tools for creating bootable USB drives. It supports both Legacy BIOS and UEFI systems and allows advanced customization.</p>
+
+      <h3>Steps</h3>
+
+      <ol>
+        <li>Download the latest version of Rufus.</li>
+        <li>Insert your USB drive.</li>
+        <li>Open Rufus.</li>
+        <li>Select your USB device.</li>
+        <li>Click <strong>Select</strong> and choose the Windows ISO.</li>
+        <li>Select the correct Partition Scheme:
+          <ul>
+            <li>GPT → UEFI Systems</li>
+            <li>MBR → Legacy BIOS Systems</li>
+          </ul>
+        </li>
+        <li>Keep File System as NTFS (or FAT32 if required).</li>
+        <li>Click <strong>Start</strong>.</li>
+        <li>Wait until the process reaches 100%.</li>
+      </ol>
+
+      <h3>Advantages of Rufus</h3>
+
+      <ul>
+        <li>Very fast.</li>
+        <li>Supports Windows, Linux and recovery ISOs.</li>
+        <li>Supports Secure Boot.</li>
+        <li>Advanced formatting options.</li>
+        <li>Lightweight and portable.</li>
+      </ul>
+
+      <h2>Method 2 – Create Bootable USB Using Ventoy</h2>
+
+      <p>Ventoy is one of the best tools for IT professionals because it allows multiple ISO files on a single USB drive. Simply copy ISO files without formatting the USB each time.</p>
+
+      <h3>Steps</h3>
+
+      <ol>
+        <li>Download Ventoy.</li>
+        <li>Install Ventoy on the USB drive.</li>
+        <li>Open the USB drive.</li>
+        <li>Copy Windows ISO files directly onto the USB.</li>
+        <li>Safely eject the USB.</li>
+        <li>Boot from the USB and select the desired ISO from the Ventoy menu.</li>
+      </ol>
+
+      <h3>Advantages of Ventoy</h3>
+
+      <ul>
+        <li>Supports multiple operating systems.</li>
+        <li>No need to recreate the USB for every ISO.</li>
+        <li>Excellent for IT support engineers.</li>
+        <li>Supports Windows, Linux, VMware and recovery tools.</li>
+        <li>Quickly update by replacing ISO files.</li>
+      </ul>
+
+      <h2>Method 3 – Microsoft Media Creation Tool</h2>
+
+      <p>Microsoft's Media Creation Tool is the safest option when creating official Windows installation media.</p>
+
+      <h3>Steps</h3>
+
+      <ol>
+        <li>Download the Media Creation Tool from Microsoft.</li>
+        <li>Run the application as Administrator.</li>
+        <li>Accept the license agreement.</li>
+        <li>Select <strong>Create Installation Media</strong>.</li>
+        <li>Select Language, Edition and Architecture.</li>
+        <li>Select <strong>USB Flash Drive</strong>.</li>
+        <li>Choose the USB device.</li>
+        <li>Wait for Windows files to download and create the bootable USB automatically.</li>
+      </ol>
+
+      <h2>Which Tool Should You Choose?</h2>
+
+      <table>
+        <tr>
+          <th>Tool</th>
+          <th>Best For</th>
+          <th>Recommended</th>
+        </tr>
+
+        <tr>
+          <td>Rufus</td>
+          <td>Single Windows Installation</td>
+          <td>★★★★★</td>
+        </tr>
+
+        <tr>
+          <td>Ventoy</td>
+          <td>Multiple ISO Files</td>
+          <td>★★★★★</td>
+        </tr>
+
+        <tr>
+          <td>Media Creation Tool</td>
+          <td>Official Microsoft Installation</td>
+          <td>★★★★☆</td>
+        </tr>
+      </table>
+
+      <h2>How to Boot from the USB</h2>
+
+      <ol>
+        <li>Insert the bootable USB.</li>
+        <li>Restart the computer.</li>
+        <li>Press the Boot Menu key (F12, F9, Esc, or F11 depending on the manufacturer).</li>
+        <li>Select the USB device.</li>
+        <li>Press Enter.</li>
+        <li>Windows Setup will start.</li>
+      </ol>
+
+      <h2>Common Boot Menu Keys</h2>
+
+      <table>
+        <tr>
+          <th>Manufacturer</th>
+          <th>Boot Menu Key</th>
+        </tr>
+
+        <tr><td>Dell</td><td>F12</td></tr>
+        <tr><td>HP</td><td>F9</td></tr>
+        <tr><td>Lenovo</td><td>F12</td></tr>
+        <tr><td>Acer</td><td>F12</td></tr>
+        <tr><td>ASUS</td><td>Esc</td></tr>
+        <tr><td>MSI</td><td>F11</td></tr>
+      </table>
+
+      <h2>Common Problems and Solutions</h2>
+
+      <h3>USB Not Showing in Boot Menu</h3>
+
+      <ul>
+        <li>Enable USB Boot in BIOS.</li>
+        <li>Disable Fast Boot if necessary.</li>
+        <li>Check UEFI/Legacy compatibility.</li>
+      </ul>
+
+      <h3>"No Bootable Device Found"</h3>
+
+      <ul>
+        <li>Recreate the USB.</li>
+        <li>Verify the ISO file is not corrupted.</li>
+        <li>Select the correct partition scheme (GPT or MBR).</li>
+      </ul>
+
+      <h3>Windows Installation Doesn't Start</h3>
+
+      <ul>
+        <li>Use another USB port (prefer USB 2.0 for older systems).</li>
+        <li>Download a fresh ISO.</li>
+        <li>Update BIOS if required.</li>
+      </ul>
+
+      <h2>Best Practices</h2>
+
+      <ul>
+        <li>Use a branded USB drive.</li>
+        <li>Keep Windows ISO files updated.</li>
+        <li>Always verify the ISO download.</li>
+        <li>Prefer GPT for modern UEFI systems.</li>
+        <li>Label your USB drives clearly.</li>
+        <li>Maintain separate USB drives for Windows and Linux if needed.</li>
+      </ul>
+
+      <h2>Real-World Tip</h2>
+
+      <p>In enterprise environments, I keep one Ventoy USB containing Windows 10, Windows 11, Windows Server, Ubuntu, Hiren's BootCD PE, and diagnostic tools. This single USB handles almost every deployment and recovery task, reducing downtime and eliminating the need to carry multiple flash drives.</p>
+
+      <h2>Final Thoughts</h2>
+
+      <p>Knowing how to create a bootable USB drive is a fundamental skill for every Desktop Support Engineer and System Administrator. Whether you choose Rufus for speed, Ventoy for flexibility, or Microsoft's Media Creation Tool for official installations, having a reliable bootable USB can save valuable time during troubleshooting, operating system deployment, and disaster recovery.</p>
+
+      <blockquote>
+        <strong>Desktop Support Tip:</strong> Ventoy is my preferred choice for day-to-day IT support because one USB can store multiple operating system images and recovery tools, making it an essential addition to every technician's toolkit.
+      </blockquote>
+    `
+  },
+/*======5th post===============*/
 
   };
 
