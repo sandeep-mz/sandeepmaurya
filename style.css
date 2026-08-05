@@ -12,6 +12,26 @@
 }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--bg-alt);color:var(--text);font-family:var(--font-body);line-height:1.6;}
+
+
+.footer-bottom img{
+  height:20px;
+  vertical-align:middle;
+  border-radius:6px;
+  opacity:.9;
+  transition:opacity .2s ease;
+}
+
+.footer-bottom img:hover{
+  opacity:1;
+}
+
+@media (max-width:480px){
+  .footer-bottom{
+    flex-direction:column;
+    gap:10px;
+  }
+}
 /* ============ BLOG POST PAGE ============ */
 .container{max-width:760px;margin:0 auto;padding:60px 24px 100px;}
 
